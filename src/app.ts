@@ -1,27 +1,25 @@
 import chalk from 'chalk';
-import WebTorrent from 'webtorrent';
+import WebTorrent, { Instance as WebTorrentInstance } from 'webtorrent';
 import { loadingAnimation } from './utils/loadingAnimation.js';
 import { startTorrentDownload } from './services/torrentService.js';
-import { getApplicationInputs } from './utils/getDownloadOptions.js';
+import { ApplicationInputs, getApplicationInputs } from './utils/getDownloadOptions.js';
 
-const torrentClient = new WebTorrent();
+const torrentClient: WebTorrentInstance = new WebTorrent();
 
 async function App (): Promise<void> {
   try {
     console.clear();
-    const { downloadPath, magnetURI } = await getApplicationInputs();
+    const { downloadPath, magnetURI }: ApplicationInputs = await getApplicationInputs();
 
     if (!magnetURI) {
       console.error(chalk.red('Erro: Magnet URI não fornecido.'));
       process.exit(1);
     }
 
-    const animationInterval = loadingAnimation();
-
     startTorrentDownload(torrentClient, magnetURI, downloadPath);
 
     setTimeout(() => {
-      clearInterval(animationInterval);
+      clearInterval(loadingAnimation());
       console.clear();
     }, 1000);
   } catch (error) {
