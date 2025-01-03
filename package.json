@@ -1,0 +1,25 @@
+{
+  "name": "torrent-script",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "inquirer": "^12.3.0",
+    "readline-sync": "^1.4.10",
+    "webtorrent": "^2.5.11"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.4",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.10.5",
+    "@types/webtorrent": "^0.110.0",
+    "typescript": "^5.7.2"
+  }
+}
