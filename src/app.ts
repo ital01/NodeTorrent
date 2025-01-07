@@ -26,6 +26,6 @@ async function App (): Promise<void> {
     console.error(chalk.red('Erro durante o download:'), error);
     process.exit(1);
   }
-};
+}
 
 App();
